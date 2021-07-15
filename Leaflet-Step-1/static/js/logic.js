@@ -26,9 +26,26 @@ function createMap(earthquakeData) {
     accessToken: API_KEY
   }).addTo(myMap);
 
-  
+    // Conditionals for countries points
+    var info = L.control({
+      position: "bottomright"
+    });
+    
+    // When the layer control is added, insert a div with the class of "legend"
+    info.onAdd = function() {
+      var div = L.DomUtil.create("div", "legend");
+      return div;
+    };
+    // Add the info legend to the map
+    info.addTo(myMap);
 
-  // Conditionals for countries points
+    document.querySelector(".legend").innerHTML = [
+      "<p class='green'> <10: Green  </p>",
+      "<p class='blue'> 11 - 100: Blue </p>",
+      "<p class='yellow'> 101 - 200: yellow</p>",
+      "<p class='red'> >200: red </p>",
+      
+    ].join("");
 
 
   // Add circles to map
