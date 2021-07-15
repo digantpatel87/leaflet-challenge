@@ -17,7 +17,6 @@ function createMap(earthquakeData) {
    // layers: [streetmap]
   });
 
-debugger;
   L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
     tileSize: 512,
@@ -58,8 +57,8 @@ debugger;
         radius: earthquakeData[i].properties.mag*4
     }).bindPopup("<h3>" + earthquakeData[i].properties.place +
             "</h3><hr><p>" + new Date(earthquakeData[i].properties.time) + "</p>" +
-            "</h3><hr><p>" + earthquakeData[i].properties.mag + "</p>" +
-            "</h3><hr><p>" + earthquakeData[i].geometry.coordinates[2] + "</p>" ).addTo(myMap);
+            "</h3><hr><p> magnitudes: " + earthquakeData[i].properties.mag + "</p>" +
+            "</h3><hr><p> depth: " + earthquakeData[i].geometry.coordinates[2] + "</p>" ).addTo(myMap);
     }
 
 
